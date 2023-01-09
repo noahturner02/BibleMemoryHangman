@@ -1,4 +1,4 @@
-package com.example.biblememoryhangman;
+package com.pottersfieldap.biblememoryhangman;
 
 import javafx.scene.layout.Pane;
 

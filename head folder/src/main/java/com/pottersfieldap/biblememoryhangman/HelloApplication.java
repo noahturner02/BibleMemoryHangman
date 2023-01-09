@@ -1,4 +1,4 @@
-package com.example.biblememoryhangman;
+package com.pottersfieldap.biblememoryhangman;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

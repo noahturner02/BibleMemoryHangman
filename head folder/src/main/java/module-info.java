@@ -6,6 +6,6 @@ module com.example.biblememoryhangman {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.biblememoryhangman to javafx.fxml;
-    exports com.example.biblememoryhangman;
+    opens com.pottersfieldap.biblememoryhangman to javafx.fxml;
+    exports com.pottersfieldap.biblememoryhangman;
 }
