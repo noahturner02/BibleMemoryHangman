@@ -24,9 +24,11 @@ public class HangmanController {
         int yLayoutTracker = 0; // Tracks the blank lines on the y axis
         int lineSize = 0;
         for (Word w : wordList) { // Make a new line for each word
+            Pane p = new Pane();
             Label l = new Label(w.getText());
-            verseTextPane.getChildren().add(l);
-            
+            p.getChildren().add(l);
+            l.layoutXProperty().bind(p.widthProperty().subtract(l.widthProperty()).divide(2));
+            verseTextPane.getChildren().add(p);
         }
     }
     @FXML
