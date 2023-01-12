@@ -29,6 +29,7 @@ public class HangmanController {
         for (Word w : wordList) { // Place the invisible label and line for each word
             Pane p = new Pane(); // wrapper pane for the labels
             Label l = new Label(w.getText());
+            l.setVisible(false);
             p.getChildren().add(l);
             l.layoutXProperty().bind(p.widthProperty().subtract(l.widthProperty()).divide(2)); // bind the label to the center of the pane
             verseTextPane.getChildren().add(p);
