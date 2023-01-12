@@ -5,7 +5,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
@@ -19,6 +22,12 @@ public class HangmanController {
     Pane manPane;
     @FXML
     TilePane verseTextPane;
+    @FXML
+    TextField textEntryField;
+    @FXML
+    Button textEntryButton;
+    @FXML
+    HBox userControlsHBox;
     int LETTERWIDTH = 10;
 
     private void placeVerseText(String verseText) { // Places the invisible labels and shows the blanks of corresponding size
