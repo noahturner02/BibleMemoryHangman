@@ -32,8 +32,8 @@
         </menus>
       </MenuBar>
       <Pane fx:id="manPane" prefHeight="200.0" prefWidth="200.0" />
-      <TilePane fx:id="verseTextPane" prefHeight="200.0" prefTileHeight="20.0" prefTileWidth="30.0" prefWidth="200.0" />
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <TilePane fx:id="verseTextPane" prefHeight="200.0" prefTileHeight="30.0" prefTileWidth="100.0" prefWidth="200.0" />
+      <HBox fx:id="userControlsHBox" prefHeight="100.0" prefWidth="200.0">
          <children>
             <TextField fx:id="textEntryField" />
             <Button fx:id="textEntryButton" mnemonicParsing="false" text="Guess" />
