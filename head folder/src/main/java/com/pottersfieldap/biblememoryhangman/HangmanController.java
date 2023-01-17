@@ -23,9 +23,9 @@ public class HangmanController {
     @FXML
     TilePane verseTextPane;
     @FXML
-    TextField textEntryField;
+    TextField guessField;
     @FXML
-    Button textEntryButton;
+    Button guessButton;
     @FXML
     HBox userControlsHBox;
     int LETTERWIDTH = 10;
@@ -75,7 +75,8 @@ public class HangmanController {
 
     @FXML
     public void initialize() {
-        placeVerseText(longer_words);
+        placeVerseText(romans);
+        
     }
 }
 
