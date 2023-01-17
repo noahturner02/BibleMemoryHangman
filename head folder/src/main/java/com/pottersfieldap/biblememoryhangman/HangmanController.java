@@ -26,8 +26,6 @@ public class HangmanController {
     TextField guessField;
     @FXML
     Button guessButton;
-    @FXML
-    HBox userControlsHBox;
     int LETTERWIDTH = 10;
     String longer_words = "supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious";
     String romans = "Paul a servant of Christ Jesus, called to be an apostle, set apart for the gospel of God, which he promised beforehand through his prophets in the holy scriptures, concerning his son, who was descended from David according to the flesh and was declared to be the son of God in power according to the Spirit of holiness by his resurrection from the dead, Christ Jesus our Lord.";
@@ -76,7 +74,6 @@ public class HangmanController {
     @FXML
     public void initialize() {
         placeVerseText(romans);
-        
     }
 }
 
