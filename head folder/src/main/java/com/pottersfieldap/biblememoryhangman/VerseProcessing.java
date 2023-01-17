@@ -14,4 +14,8 @@ public class VerseProcessing {
         }
         return wordList;
     }
+    private List<Word> filterWords(List<Word> wordList) {
+        // filter out punctuation and make everything lowercase to
+        return wordList;
+    }
 }
