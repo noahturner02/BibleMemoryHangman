@@ -3,11 +3,13 @@ package com.pottersfieldap.biblememoryhangman;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -46,6 +48,10 @@ public class HangmanController {
         }
     }
 
+    private String getGuess() {
+        return guessField.getText();
+    }
+
     private void drawLines(Pane p) {
         Line l = new Line();
         Label word = (Label) p.getChildren().get(0);
@@ -74,6 +80,12 @@ public class HangmanController {
     @FXML
     public void initialize() {
         placeVerseText(romans);
+        guessButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.out.println(getGuess());
+            }
+        });
     }
 }
 
