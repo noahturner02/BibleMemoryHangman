@@ -38,10 +38,11 @@ public class HangmanController {
         return currentWordList;
     }
     public void setCurrentWordList(List<Word> wordList) {
-        this.currentWordList = currentWordList;
+        this.currentWordList = wordList;
     }
     private void placeVerseText(String verseText) { // Places the invisible labels and shows the blanks of corresponding size
         List<Word> wordList = VerseProcessing.textToWords(verseText);
+        setCurrentWordList(wordList);
         int xLayoutTracker = 0; // Tracks the blank lines that are drawn in the verse text pane. follows from left to right
         int yLayoutTracker = 0; // Tracks the blank lines on the y axis
         int lineSize = 0;
@@ -85,16 +86,25 @@ public class HangmanController {
     }
 
     private void matchAndReveal(String guess) {
-
+        System.out.println(getCurrentWordList());
+        for (int i = 0; i < getCurrentWordList().size(); i++) {
+            if (getCurrentWordList().get(i).getFilteredText().equalsIgnoreCase(guess)) {
+                revealWordByIndex(i);
+            }
+        }
     }
 
+    private void revealWordByIndex(int i) {
+        Pane p = (Pane) verseTextPane.getChildren().get(i);
+        p.getChildren().get(0).setVisible(true);
+    }
     @FXML
     public void initialize() {
         placeVerseText(romans);
         guessButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println(getGuess());
+                //System.out.println(getGuess());
                 matchAndReveal(getGuess());
 
             }
