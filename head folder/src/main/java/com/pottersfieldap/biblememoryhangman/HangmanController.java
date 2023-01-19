@@ -106,7 +106,7 @@ public class HangmanController {
             public void handle(MouseEvent mouseEvent) {
                 //System.out.println(getGuess());
                 matchAndReveal(getGuess());
-
+                guessField.setText("");
             }
         });
     }
