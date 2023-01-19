@@ -59,7 +59,6 @@ public class HangmanController {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 l.setStartX((p.getWidth() - word.getWidth()) / 2);
-                System.out.println(p.getWidth());
             }
         });
         word.heightProperty().addListener(new ChangeListener<Number>() {

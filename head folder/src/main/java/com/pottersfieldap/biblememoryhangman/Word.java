@@ -13,7 +13,7 @@ public class Word {
     }
     public int getSize() {
         return size;
-    }x
+    }
     public String getFilteredText() {
         return filteredText;
     }

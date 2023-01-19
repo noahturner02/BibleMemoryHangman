@@ -2,6 +2,7 @@ package com.pottersfieldap.biblememoryhangman;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 public class VerseProcessing {
@@ -12,10 +13,22 @@ public class VerseProcessing {
             Word w = new Word(words[i].length(), words[i]);
             wordList.add(w);
         }
+        wordList = filterWords(wordList);
         return wordList;
     }
-    private List<Word> filterWords(List<Word> wordList) {
-        // filter out punctuation and make everything lowercase to
+    private static List<Word> filterWords(List<Word> wordList) {
+        // filter out punctuation and make everything lowercase
+        List<Word> filteredWordList = new ArrayList<>();
+        for (Word w : wordList) {
+            String newWord = w.getText();
+            newWord = newWord.replace(",", "");
+            newWord = newWord.replace(":", "");
+            newWord = newWord.replace(".", "");
+            newWord = newWord.replace(";", "");
+            newWord = newWord.toLowerCase(Locale.ROOT);
+            w.setFilteredText(newWord);
+            System.out.println(w.getFilteredText());
+        }
         return wordList;
     }
 }
