@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
@@ -30,6 +31,20 @@ public class HangmanController {
     TextField guessField;
     @FXML
     Button guessButton;
+    @FXML
+    Circle head;
+    @FXML
+    Line spine;
+    @FXML
+    Line rightLeg;
+    @FXML
+    Line leftLeg;
+    @FXML
+    Line rightArm;
+    @FXML
+    Line leftArm;
+    
+
     int LETTERWIDTH = 10;
     String longer_words = "supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious";
     String romans = "Paul a servant of Christ Jesus, called to be an apostle, set apart for the gospel of God, which he promised beforehand through his prophets in the holy scriptures, concerning his son, who was descended from David according to the flesh and was declared to be the son of God in power according to the Spirit of holiness by his resurrection from the dead, Christ Jesus our Lord.";

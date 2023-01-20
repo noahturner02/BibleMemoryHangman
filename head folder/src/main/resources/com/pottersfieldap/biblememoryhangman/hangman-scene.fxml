@@ -11,6 +11,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pottersfieldap.biblememoryhangman.HangmanController">
    <children>
@@ -33,7 +35,20 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Pane fx:id="manPane" prefHeight="200.0" prefWidth="200.0" />
+      <Pane fx:id="manPane" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Line endX="-100.0" endY="92.0" layoutX="380.0" layoutY="45.0" startX="-100.0" />
+            <Line endX="25.0" layoutX="279.0" layoutY="137.0" startX="-25.0" />
+            <Line endX="68.0" endY="-0.5" layoutX="281.0" layoutY="45.0" startX="-1.0" startY="-0.5" />
+            <Line endX="-47.0" endY="-24.0" layoutX="347.0" layoutY="68.0" startX="-67.5" startY="1.0" />
+            <Line endX="-0.5" endY="-46.0" layoutX="350.0" layoutY="91.0" startX="-0.5" startY="-27.0" />
+            <Circle fx:id="head" fill="GOLD" layoutX="349.0" layoutY="75.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line fx:id="spine" endX="-1.0" endY="-20.0" layoutX="350.0" layoutY="105.0" startX="-1.0" startY="11.0" />
+            <Line fx:id="rightLeg" endX="-0.5" endY="-0.5" layoutX="350.0" layoutY="117.0" startX="10.0" startY="20.0" />
+            <Line fx:id="leftLeg" endX="21.5" endY="-0.5" layoutX="327.0" layoutY="117.0" startX="10.0" startY="19.0" />
+            <Line fx:id="rightArm" endX="-57.0" endY="0.5" layoutX="426.0" layoutY="99.0" startX="-77.0" startY="0.5" />
+            <Line fx:id="leftArm" endX="33.5" endY="1.0" layoutX="315.0" layoutY="99.0" startX="14.0" startY="1.0" />
+         </children></Pane>
       <TilePane fx:id="verseTextPane" prefHeight="200.0" prefTileHeight="30.0" prefTileWidth="100.0" prefWidth="200.0" />
       <GridPane>
         <columnConstraints>
