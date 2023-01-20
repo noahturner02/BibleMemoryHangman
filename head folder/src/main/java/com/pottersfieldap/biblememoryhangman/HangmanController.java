@@ -43,7 +43,6 @@ public class HangmanController {
     Line rightArm;
     @FXML
     Line leftArm;
-    
 
     int LETTERWIDTH = 10;
     String longer_words = "supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious";
@@ -101,12 +100,41 @@ public class HangmanController {
         p.getChildren().add(l);
     }
 
+    private void revealPiece() {
+        // Reveals the next piece of the hangman
+        if (!head.isVisible()) {
+            head.setVisible(true);
+        }
+        else if (!spine.isVisible()) {
+            spine.setVisible(true);
+        }
+        else if (!rightArm.isVisible()) {
+            rightArm.setVisible(true);
+        }
+        else if (!leftArm.isVisible()) {
+            leftArm.setVisible(true);
+        }
+        else if (!rightLeg.isVisible()) {
+            rightLeg.setVisible(true);
+        }
+        else if (!leftLeg.isVisible()) {
+            leftLeg.setVisible(true);
+        }
+        else {
+            // Game Over Logic Here
+        }
+    }
+
     private void matchAndReveal(String guess) {
-        System.out.println(getCurrentWordList());
+        boolean hit = false;
         for (int i = 0; i < getCurrentWordList().size(); i++) {
             if (getCurrentWordList().get(i).getFilteredText().equalsIgnoreCase(guess)) {
                 revealWordByIndex(i);
+                hit = true;
             }
+        }
+        if (!hit) {
+            revealPiece();
         }
     }
 
@@ -114,9 +142,20 @@ public class HangmanController {
         Pane p = (Pane) verseTextPane.getChildren().get(i);
         p.getChildren().get(0).setVisible(true);
     }
+
+    private void hideBody() {
+        head.setVisible(false);
+        spine.setVisible(false);
+        leftArm.setVisible(false);
+        rightArm.setVisible(false);
+        leftLeg.setVisible(false);
+        rightLeg.setVisible(false);
+    }
+
     @FXML
     public void initialize() {
         placeVerseText(romans);
+        hideBody();
         guessButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
