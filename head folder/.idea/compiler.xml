@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bible-memory-hangman" />
+        <module name="head_folder" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="17">
+      <module name="bible-memory-hangman" target="12" />
+    </bytecodeTargetLevel>
   </component>
 </project>
