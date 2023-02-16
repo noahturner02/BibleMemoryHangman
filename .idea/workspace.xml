@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2064fc9-2624-47ab-811f-1280f7f8b30c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/head folder/src/main/java/com/pottersfieldap/biblememoryhangman/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/head folder/src/main/java/com/pottersfieldap/biblememoryhangman/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/head folder/src/main/resources/com/pottersfieldap/biblememoryhangman/game-setup-wizard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/head folder/src/main/resources/com/pottersfieldap/biblememoryhangman/game-setup-wizard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/head folder/target/classes/com/pottersfieldap/biblememoryhangman/HangmanController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/head folder/target/classes/com/pottersfieldap/biblememoryhangman/HangmanController$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/head folder/target/classes/com/pottersfieldap/biblememoryhangman/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/head folder/target/classes/com/pottersfieldap/biblememoryhangman/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,11 +20,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/head folder" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "E:/Documents/GitHub/BibleMemoryHangman/head folder"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
