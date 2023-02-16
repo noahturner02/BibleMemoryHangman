@@ -26,7 +26,7 @@ public class GameSetupController {
 
     ObservableList<String> booksOfTheBible = FXCollections.observableArrayList();
     private void playButtonClicked() {
-        if (verseTextField.getText().isEmpty() || chapterField.getText().isEmpty() || startVerseField.getText().isEmpty() || !bookChoiceBox.isShowing()) {
+        if (verseTextField.getText().isEmpty() || chapterField.getText().isEmpty() || startVerseField.getText().isEmpty() || (bookChoiceBox.getValue() == null)) {
             System.out.println("Missing info. Please enter the text and the reference for your verse");
         }
         else {
