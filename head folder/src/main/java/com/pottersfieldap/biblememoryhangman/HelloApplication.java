@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-        WebScraper.testBrowse();
+        WebScraper.getRawVerseText("Romans", 3, 1, 4, "ESV");
     }
 
     public static void main(String[] args) {

@@ -8,14 +8,14 @@ import java.io.IOException;
 
 
 public class WebScraper {
-    public static void testBrowse() {
+    public static void getRawVerseText(String bookName, int chapterNum, int startVerse, int endVerse, String versionName) {
         WebClient wc = new WebClient(BrowserVersion.CHROME);
         wc.getOptions().setCssEnabled(false);
         wc.getOptions().setThrowExceptionOnFailingStatusCode(false);
         wc.getOptions().setThrowExceptionOnScriptError(false);
         wc.getOptions().setPrintContentOnFailingStatusCode(false);
         try {
-            HtmlPage page  = wc.getPage("https://www.biblegateway.com/passage/?search=Romans%203&version=ESV");
+            HtmlPage page  = wc.getPage("https://www.biblegateway.com/passage/?search=" + bookName + chapterNum + "%3A" + startVerse + "-" + endVerse + "&version=" + versionName);
             System.out.println(page.getTitleText());
             String xpath = "//div[@class='version-ESV result-text-style-normal text-html']";
             List<HtmlDivision> divisionList = page.getByXPath(xpath);
@@ -27,7 +27,7 @@ public class WebScraper {
             wc.getCurrentWindow().getJobManager().removeAllJobs();
             wc.close();
         } catch (IOException e) {
-            System.out.println("SIUUUUUU");
+            System.out.println("Something went wrong. Check the Web Scraper");
         }
     }
 }
