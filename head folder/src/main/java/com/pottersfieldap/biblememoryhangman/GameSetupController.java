@@ -4,11 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+
+import java.util.function.UnaryOperator;
 
 public class GameSetupController {
     @FXML
@@ -25,12 +24,29 @@ public class GameSetupController {
     TextField endVerseField;
 
     ObservableList<String> booksOfTheBible = FXCollections.observableArrayList();
+
+    private void setTextFieldFormatters() {
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            String text = change.getText();
+            if (text.matches("[0-9]*")) {
+                return change;
+            }
+            return null;
+        };
+        chapterField.setTextFormatter(new TextFormatter<String>(filter));
+        startVerseField.setTextFormatter(new TextFormatter<String>(filter));
+        endVerseField.setTextFormatter(new TextFormatter<String>(filter));
+    }
     private void playButtonClicked() {
         if (verseTextField.getText().isEmpty() || chapterField.getText().isEmpty() || startVerseField.getText().isEmpty() || (bookChoiceBox.getValue() == null)) {
             System.out.println("Missing info. Please enter the text and the reference for your verse");
         }
         else {
-            System.out.println("Let the games begin!");
+            // If no end verse is given, we only want a single verse
+            if (endVerseField.getText().isEmpty()) {
+                endVerseField.setText(startVerseField.getText());
+            }
+            WebScraper.getRawVerseText((String) bookChoiceBox.getValue(), 2, 13, 13, "ESV");
         }
     }
     private void setBooksOfTheBible() {
@@ -49,6 +65,7 @@ public class GameSetupController {
     @FXML
     public void initialize() {
         setBooksOfTheBible();
+        setTextFieldFormatters();
         playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
