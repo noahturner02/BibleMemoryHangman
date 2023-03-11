@@ -1,6 +1,7 @@
 package com.pottersfieldap.biblememoryhangman;
 import com.gargoylesoftware.htmlunit.*;
 import com.gargoylesoftware.htmlunit.html.*;
+import com.gargoylesoftware.htmlunit.javascript.host.dom.Node;
 
 import java.util.List;
 
@@ -21,10 +22,20 @@ public class WebScraper {
             String xpath = "//div[@class='version-ESV result-text-style-normal text-html']";
             HtmlDivision passageDiv = page.getFirstByXPath(xpath);
             DomNodeList<HtmlElement> paragraphList = passageDiv.getElementsByTagName("p");
-            for (HtmlElement p : paragraphList) {
-                System.out.println(p.getTextContent());
-                sb.append(p.getTextContent());
+            HtmlElement passageParagraph = paragraphList.get(0);
+
+            for (DomElement e : passageParagraph.getChildElements()) {
+                if (e.getTagName().equals("span")) {
+                    for (DomNode n : e.getChildNodes()) {
+                        if (n.getNodeType() == Node.TEXT_NODE) {
+                            sb.append(n.getTextContent());
+                            sb.append(" ");
+                        }
+                    }
+                }
             }
+
+            System.out.println(sb.toString());
             wc.getCurrentWindow().getJobManager().removeAllJobs();
             wc.close();
         } catch (IOException e) {
