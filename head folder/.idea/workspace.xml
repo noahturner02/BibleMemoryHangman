@@ -7,7 +7,8 @@
     <list default="true" id="50e823cd-bc53-4b6d-a01d-6a845c259973" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameSetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameSetupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/VerseProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/VerseProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/WebScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/WebScraper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,13 +72,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/Documents/GitHub/BibleMemoryHangman/head folder"
-  }
-}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle wrapper" />

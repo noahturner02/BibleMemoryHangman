@@ -31,4 +31,5 @@ public class VerseProcessing {
         }
         return wordList;
     }
+
 }

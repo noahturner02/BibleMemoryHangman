@@ -46,7 +46,7 @@ public class GameSetupController {
             if (endVerseField.getText().isEmpty()) {
                 endVerseField.setText(startVerseField.getText());
             }
-            WebScraper.getRawVerseText((String) bookChoiceBox.getValue(), Integer.parseInt(chapterField.getText()), Integer.parseInt(startVerseField.getText()), Integer.parseInt(endVerseField.getText()), "ESV");
+            verseTextField.setText(WebScraper.getRawVerseText((String) bookChoiceBox.getValue(), Integer.parseInt(chapterField.getText()), Integer.parseInt(startVerseField.getText()), Integer.parseInt(endVerseField.getText()), "ESV"));
         }
     }
     private void setBooksOfTheBible() {
