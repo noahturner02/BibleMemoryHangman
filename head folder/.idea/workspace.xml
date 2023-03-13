@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="50e823cd-bc53-4b6d-a01d-6a845c259973" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/WebScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/WebScraper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameSetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameSetupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pottersfieldap/biblememoryhangman/game-setup-wizard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pottersfieldap/biblememoryhangman/game-setup-wizard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/WebScraper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/WebScraper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -29,7 +29,7 @@
          <font>
             <Font size="36.0" />
          </font></Label>
-      <TextArea fx:id="verseTextField" prefHeight="133.0" prefWidth="194.0" promptText="ex. For God so loved the world that he gave his only Son, that whoever believes in him will not perish but have eternal life" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextArea fx:id="verseTextField" editable="false" prefHeight="133.0" prefWidth="194.0" promptText="ex. For God so loved the world that he gave his only Son, that whoever believes in him will not perish but have eternal life" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Label text="Bible Verse(s)" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font size="14.0" />
@@ -75,6 +75,11 @@
          </GridPane.margin>
       </Label>
       <Button fx:id="playButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="Play" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets left="435.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="loadButton" mnemonicParsing="false" text="Load" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="385.0" />
          </GridPane.margin>

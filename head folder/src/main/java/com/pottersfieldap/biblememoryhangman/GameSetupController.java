@@ -11,6 +11,8 @@ import java.util.function.UnaryOperator;
 
 public class GameSetupController {
     @FXML
+    Button loadButton;
+    @FXML
     Button playButton;
     @FXML
     TextArea verseTextField;
@@ -37,8 +39,8 @@ public class GameSetupController {
         startVerseField.setTextFormatter(new TextFormatter<String>(filter));
         endVerseField.setTextFormatter(new TextFormatter<String>(filter));
     }
-    private void playButtonClicked() {
-        if (verseTextField.getText().isEmpty() || chapterField.getText().isEmpty() || startVerseField.getText().isEmpty() || (bookChoiceBox.getValue() == null)) {
+    private void loadButtonClicked() {
+        if (chapterField.getText().isEmpty() || startVerseField.getText().isEmpty() || (bookChoiceBox.getValue() == null)) {
             System.out.println("Missing info. Please enter the text and the reference for your verse");
         }
         else {
@@ -66,10 +68,18 @@ public class GameSetupController {
     public void initialize() {
         setBooksOfTheBible();
         setTextFieldFormatters();
+        playButton.setDisable(true);
+        loadButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                loadButtonClicked();
+                playButton.setDisable(false);
+            }
+        });
         playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                playButtonClicked();
+
             }
         });
     }
