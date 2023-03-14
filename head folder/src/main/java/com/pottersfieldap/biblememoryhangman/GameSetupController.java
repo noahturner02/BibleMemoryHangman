@@ -4,9 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.function.UnaryOperator;
 
 public class GameSetupController {
@@ -51,6 +56,16 @@ public class GameSetupController {
             verseTextField.setText(WebScraper.getRawVerseText((String) bookChoiceBox.getValue(), Integer.parseInt(chapterField.getText()), Integer.parseInt(startVerseField.getText()), Integer.parseInt(endVerseField.getText()), "ESV"));
         }
     }
+    private void startGame() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("hangman-scene.fxml"));
+            Stage window = (Stage) playButton.getScene().getWindow();
+            window.setScene(new Scene(root, 900, 600));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void setBooksOfTheBible() {
         bookChoiceBox.setItems(booksOfTheBible);
         booksOfTheBible.addAll(
@@ -79,7 +94,7 @@ public class GameSetupController {
         playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-
+                startGame();
             }
         });
     }
