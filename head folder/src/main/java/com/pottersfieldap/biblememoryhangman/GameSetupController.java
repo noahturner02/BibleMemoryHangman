@@ -58,6 +58,8 @@ public class GameSetupController {
     }
     private void startGame() {
         try {
+            ScriptureHolder scriptureHolder = ScriptureHolder.getInstance();
+            scriptureHolder.setScripture(verseTextField.getText());
             Parent root = FXMLLoader.load(getClass().getResource("hangman-scene.fxml"));
             Stage window = (Stage) playButton.getScene().getWindow();
             window.setScene(new Scene(root, 900, 600));

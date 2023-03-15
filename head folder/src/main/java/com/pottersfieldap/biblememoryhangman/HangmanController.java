@@ -45,8 +45,7 @@ public class HangmanController {
     Line leftArm;
 
     int LETTERWIDTH = 10;
-    String longer_words = "supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious supercalifragilistic expialidocious";
-    String romans = "Paul a servant of Christ Jesus, called to be an apostle, set apart for the gospel of God, which he promised beforehand through his prophets in the holy scriptures, concerning his son, who was descended from David according to the flesh and was declared to be the son of God in power according to the Spirit of holiness by his resurrection from the dead, Christ Jesus our Lord.";
+    String scripture = "";
     List<Word> currentWordList = new ArrayList<>();
 
     public List<Word> getCurrentWordList() {
@@ -154,7 +153,10 @@ public class HangmanController {
 
     @FXML
     public void initialize() {
-        placeVerseText(romans);
+        ScriptureHolder scriptureHolder = ScriptureHolder.getInstance();
+        scripture = scriptureHolder.getScripture();
+        System.out.println("Here is the scripture: " + scripture);
+        placeVerseText(scripture);
         hideBody();
         guessButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
