@@ -60,7 +60,7 @@ public class WebScraper {
                         }
                         // Skip over all the <sup> tags. These contain verse numbers and cross references
                         if (!subSpanNode.getNodeName().equals("sup")) {
-                            sb.append(subSpanNode.getTextContent());
+                            sb.append(subSpanNode.getTextContent().trim());
                             sb.append(" ");
                         }
                     }
