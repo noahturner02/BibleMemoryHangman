@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="350.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="com.pottersfieldap.biblememoryhangman.GameResultController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pottersfieldap.biblememoryhangman.GameResultController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="25.0" prefWidth="10.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="400.0" />
@@ -26,7 +26,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="exhortationText" prefHeight="66.0" prefWidth="28.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Label fx:id="exhortationText" alignment="CENTER" prefHeight="105.0" prefWidth="300.0" text="Label" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <padding>
             <Insets bottom="50.0" />
          </padding>
