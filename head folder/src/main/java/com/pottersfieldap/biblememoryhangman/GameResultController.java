@@ -13,4 +13,10 @@ public class GameResultController {
     Button replayButton;
     @FXML
     Button quitButton;
+
+    @FXML
+    public void initialize() {
+        gameStateText.setText("Winner!");
+        exhortationText.setText("Great job! By remembering God's word, you are hiding it in your heart. Keep it up!");
+    }
 }
