@@ -25,6 +25,7 @@ public class VerseProcessing {
             newWord = newWord.replace(":", "");
             newWord = newWord.replace(".", "");
             newWord = newWord.replace(";", "");
+            newWord = newWord.replace("?", "");
             newWord = newWord.toLowerCase(Locale.ROOT);
             w.setFilteredText(newWord);
            // System.out.println(w.getFilteredText());
