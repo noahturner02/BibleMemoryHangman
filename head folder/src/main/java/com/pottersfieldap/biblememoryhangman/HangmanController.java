@@ -58,6 +58,17 @@ public class HangmanController {
     public void setCurrentWordList(List<Word> wordList) {
         this.currentWordList = wordList;
     }
+    private boolean checkForWin() {
+        boolean win = true;
+        for (int i = 0; i < verseTextPane.getChildren().size(); i++) {
+            Pane p = (Pane) verseTextPane.getChildren().get(i);
+            if (!p.getChildren().get(0).isVisible()) {
+                win = false;
+                break;
+            }
+        }
+        return win;
+    }
     private void placeVerseText(String verseText) { // Places the invisible labels and shows the blanks of corresponding size
         List<Word> wordList = VerseProcessing.textToWords(verseText);
         setCurrentWordList(wordList);
@@ -141,6 +152,18 @@ public class HangmanController {
             if (getCurrentWordList().get(i).getFilteredText().equalsIgnoreCase(guess)) {
                 revealWordByIndex(i);
                 hit = true;
+            }
+        }
+        if (checkForWin()) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("game-result-window.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 300, 600);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("You Win");
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         if (!hit) {
