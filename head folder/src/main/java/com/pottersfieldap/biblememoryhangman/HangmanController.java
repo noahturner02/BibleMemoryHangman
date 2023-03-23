@@ -138,6 +138,8 @@ public class HangmanController {
                 stage.setScene(scene);
                 stage.setTitle("You Lose");
                 stage.show();
+
+                disableControls();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -163,6 +165,8 @@ public class HangmanController {
                 stage.setScene(scene);
                 stage.setTitle("You Win");
                 stage.show();
+
+                disableControls();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -186,6 +190,18 @@ public class HangmanController {
         rightLeg.setVisible(false);
     }
 
+    private void disableControls() {
+        // When the game has ended, disable the guessField and guess Button.
+        guessField.setDisable(true);
+        guessButton.setDisable(true);
+    }
+
+    private void enableControls() {
+        // When the scene is being loaded and reset, re-enable the controls
+        guessField.setDisable(false);
+        guessButton.setDisable(false);
+    }
+
     @FXML
     public void initialize() {
         SceneRelay sceneRelay = SceneRelay.getInstance();
@@ -193,6 +209,7 @@ public class HangmanController {
         System.out.println("Here is the scripture: " + scripture);
         placeVerseText(scripture);
         hideBody();
+        enableControls();
         guessButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
