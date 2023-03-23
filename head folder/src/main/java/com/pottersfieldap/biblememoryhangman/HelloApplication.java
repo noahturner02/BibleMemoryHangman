@@ -11,6 +11,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        SceneRelay sceneRelay = SceneRelay.getInstance();
+        sceneRelay.setStage(stage);
+
         FXMLLoader fxmlLoader= new FXMLLoader(HelloApplication.class.getResource("game-setup-wizard.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 300);
         stage.setTitle("Bible Memory Hangman");

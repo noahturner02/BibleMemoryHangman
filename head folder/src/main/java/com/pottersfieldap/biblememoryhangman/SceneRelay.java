@@ -1,6 +1,9 @@
 package com.pottersfieldap.biblememoryhangman;
 
+import javafx.stage.Stage;
+
 public class SceneRelay {
+    private Stage stage;
     private String scripture;
     private boolean win;
     private final static SceneRelay INSTANCE = new SceneRelay();
@@ -25,5 +28,13 @@ public class SceneRelay {
 
     public Boolean getWin() {
         return win;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }

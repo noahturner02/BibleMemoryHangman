@@ -4,9 +4,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GameResultController {
     private boolean win;
@@ -40,7 +44,16 @@ public class GameResultController {
         replayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                // fill this in once I figure out live scene switching
+                try {
+                    Stage stage = sceneRelay.getStage();
+                    Parent root = FXMLLoader.load(this.getClass().getResource("game-setup-wizard.fxml"));
+                    stage.setScene(new Scene(root, 600, 300));
+                    Stage thisStage =  (Stage) replayButton.getScene().getWindow();
+                    thisStage.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
     }
