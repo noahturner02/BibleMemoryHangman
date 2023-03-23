@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.function.UnaryOperator;
 
 public class GameSetupController {
@@ -58,8 +57,8 @@ public class GameSetupController {
     }
     private void startGame() {
         try {
-            ScriptureHolder scriptureHolder = ScriptureHolder.getInstance();
-            scriptureHolder.setScripture(verseTextField.getText());
+            SceneRelay sceneRelay = SceneRelay.getInstance();
+            sceneRelay.setScripture(verseTextField.getText());
             Parent root = FXMLLoader.load(getClass().getResource("hangman-scene.fxml"));
             Stage window = (Stage) playButton.getScene().getWindow();
             window.setScene(new Scene(root, 900, 600));

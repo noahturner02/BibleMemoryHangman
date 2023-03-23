@@ -2,20 +2,16 @@ package com.pottersfieldap.biblememoryhangman;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -48,7 +44,6 @@ public class HangmanController {
     @FXML
     Line leftArm;
 
-    int LETTERWIDTH = 10;
     String scripture = "";
     List<Word> currentWordList = new ArrayList<>();
 
@@ -134,6 +129,9 @@ public class HangmanController {
         else if (!leftLeg.isVisible()) {
             leftLeg.setVisible(true);
             try {
+                SceneRelay sceneRelay = SceneRelay.getInstance();
+                sceneRelay.setWin(false);
+
                 FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("game-result-window.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 300, 600);
                 Stage stage = new Stage();
@@ -156,6 +154,9 @@ public class HangmanController {
         }
         if (checkForWin()) {
             try {
+                SceneRelay sceneRelay = SceneRelay.getInstance();
+                sceneRelay.setWin(true);
+
                 FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("game-result-window.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 300, 600);
                 Stage stage = new Stage();
@@ -187,8 +188,8 @@ public class HangmanController {
 
     @FXML
     public void initialize() {
-        ScriptureHolder scriptureHolder = ScriptureHolder.getInstance();
-        scripture = scriptureHolder.getScripture();
+        SceneRelay sceneRelay = SceneRelay.getInstance();
+        scripture = sceneRelay.getScripture();
         System.out.println("Here is the scripture: " + scripture);
         placeVerseText(scripture);
         hideBody();
