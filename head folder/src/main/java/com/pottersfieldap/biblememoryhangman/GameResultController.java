@@ -44,16 +44,10 @@ public class GameResultController {
         replayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                try {
-                    Stage stage = sceneRelay.getStage();
-                    Parent root = FXMLLoader.load(this.getClass().getResource("game-setup-wizard.fxml"));
-                    stage.setScene(new Scene(root, 600, 300));
-                    Stage thisStage =  (Stage) replayButton.getScene().getWindow();
-                    thisStage.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+                sceneRelay.addToStageMap("result_stage", (Stage) replayButton.getScene().getWindow());
+                sceneRelay.getFromStageMap("setup_stage").show();
+                sceneRelay.getFromStageMap("hangman_stage").hide();
+                sceneRelay.getFromStageMap("result_stage").hide();
             }
         });
     }

@@ -1,8 +1,12 @@
 package com.pottersfieldap.biblememoryhangman;
 
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+
 public class SceneRelay {
+    private HashMap<String, Stage> stageMap = new HashMap<>();
     private Stage stage;
     private String scripture;
     private boolean win;
@@ -36,5 +40,13 @@ public class SceneRelay {
 
     public Stage getStage() {
         return stage;
+    }
+
+    public void addToStageMap(String name, Stage stage) {
+        stageMap.put(name, stage);
+    }
+
+    public Stage getFromStageMap(String name) {
+        return stageMap.get(name);
     }
 }

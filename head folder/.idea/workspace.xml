@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50e823cd-bc53-4b6d-a01d-6a845c259973" name="Changes" comment="" />
+    <list default="true" id="50e823cd-bc53-4b6d-a01d-6a845c259973" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameResultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameSetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/GameSetupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/HangmanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/HangmanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/SceneRelay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/SceneRelay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameResultController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameResultController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameResultController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameResultController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameResultController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameResultController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/GameSetupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/HangmanController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/HangmanController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/HangmanController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/HangmanController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/SceneRelay.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pottersfieldap/biblememoryhangman/SceneRelay.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -131,6 +131,7 @@ public class HangmanController {
             try {
                 SceneRelay sceneRelay = SceneRelay.getInstance();
                 sceneRelay.setWin(false);
+                sceneRelay.addToStageMap("hangman_stage", (Stage) verseTextPane.getScene().getWindow());
 
                 FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("game-result-window.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 300, 600);
@@ -158,6 +159,7 @@ public class HangmanController {
             try {
                 SceneRelay sceneRelay = SceneRelay.getInstance();
                 sceneRelay.setWin(true);
+                sceneRelay.addToStageMap("hangman_stage", (Stage) verseTextPane.getScene().getWindow());
 
                 FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("game-result-window.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 300, 600);
