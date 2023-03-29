@@ -18,6 +18,8 @@ public class VerseProcessing {
     }
     private static List<Word> filterWords(List<Word> wordList) {
         // filter out punctuation and make everything lowercase
+        char leftQuote = '\u201c';
+        char rightQuote = '\u201d';
         List<Word> filteredWordList = new ArrayList<>();
         for (Word w : wordList) {
             String newWord = w.getText();
@@ -26,6 +28,9 @@ public class VerseProcessing {
             newWord = newWord.replace(".", "");
             newWord = newWord.replace(";", "");
             newWord = newWord.replace("?", "");
+            newWord = newWord.replace("\"", "");
+            newWord = newWord.replace(String.valueOf(leftQuote), "");
+            newWord = newWord.replace(String.valueOf(rightQuote), "");
             newWord = newWord.toLowerCase(Locale.ROOT);
             w.setFilteredText(newWord);
            // System.out.println(w.getFilteredText());
