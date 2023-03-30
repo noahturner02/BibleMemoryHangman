@@ -178,7 +178,7 @@ public class HangmanController {
     // Once the game has ended, switch the scene to the result screen and disable controls
     private void endGame(Boolean win) {
         sceneRelay.setWin(win);
-        sceneRelay.switchScene("hangman-scene.fxml", "game-result-window.fxml", 300, 600, true);
+        sceneRelay.newStage("game-result-window.fxml", 300, 600); // Make new Stage
         disableControls();
         if (win) {
             sceneRelay.getFromStageMap("game-result-window.fxml").setTitle("You Win!");

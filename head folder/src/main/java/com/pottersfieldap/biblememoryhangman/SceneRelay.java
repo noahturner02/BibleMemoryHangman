@@ -71,22 +71,27 @@ public class SceneRelay {
     public void switchScene(String current_scene, String future_scene, int xDimension, int yDimension, Boolean new_scene) {
         // If a new scene should be made
         if (new_scene) {
-            try {
-                // Use the FXMLLoader to make a whole new stage
-                Parent root = FXMLLoader.load(getClass().getResource(future_scene));
-                Stage newStage = new Stage();
-                newStage.setScene(new Scene(root, xDimension, yDimension));
-                addToStageMap(future_scene, newStage);
-                newStage.show();
-                // Hide old stage
-                getFromStageMap(current_scene).hide();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            // Make new Stage
+            newStage(future_scene, xDimension, yDimension);
+            // Hide old stage
+            getFromStageMap(current_scene).hide();
         } else {
             // Simply show the new stage and hide the old one.
             getFromStageMap(future_scene).show();
             getFromStageMap(current_scene).hide();
+        }
+    }
+    // Make a new Stage without replacement
+    public void newStage(String future_scene, int xDimension, int yDimension) {
+        try {
+            // Use the FXMLLoader to make a whole new stage
+            Parent root = FXMLLoader.load(getClass().getResource(future_scene));
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(root, xDimension, yDimension));
+            addToStageMap(future_scene, newStage);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
