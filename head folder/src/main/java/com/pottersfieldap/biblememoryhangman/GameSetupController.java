@@ -66,8 +66,10 @@ public class GameSetupController {
     // Logic that runs when the play button is pressed. Transition scenes and send data to the hangman game
     private void startGame() {
         try {
+            // Set the scripture data.
             SceneRelay sceneRelay = SceneRelay.getInstance();
             sceneRelay.setScripture(verseTextField.getText());
+            // Switch scenes to the hangman game
             sceneRelay.switchScene("game-setup-wizard.fxml", "hangman-scene.fxml", 900, 600, true);
         } catch (Exception e) {
             e.printStackTrace();
