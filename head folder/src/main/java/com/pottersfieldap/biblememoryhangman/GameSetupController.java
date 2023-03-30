@@ -12,8 +12,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.util.function.UnaryOperator;
-
+/* This is the FXML controller for the setup wizard. This will control the logic and layout of this scene.*/
 public class GameSetupController {
+    // Initialize all the FXML elements
     @FXML
     Button loadButton;
     @FXML
@@ -28,22 +29,28 @@ public class GameSetupController {
     TextField startVerseField;
     @FXML
     TextField endVerseField;
-
+    // List of books of the bible. Will be used for the ChoiceBox.
     ObservableList<String> booksOfTheBible = FXCollections.observableArrayList();
-
+    // Creates and applies a numbers-only filter to certain boxes. A one time setup routine.
     private void setTextFieldFormatters() {
+        // Create the filter with a lambda expression
         UnaryOperator<TextFormatter.Change> filter = change -> {
+            // text is the text that was just added
             String text = change.getText();
+            // If the text is a digit, keep it. If not, discard it.
             if (text.matches("[0-9]*")) {
                 return change;
             }
             return null;
         };
+        // Apply this filter to chapterField, startVerseField, and endVerseField.
         chapterField.setTextFormatter(new TextFormatter<String>(filter));
         startVerseField.setTextFormatter(new TextFormatter<String>(filter));
         endVerseField.setTextFormatter(new TextFormatter<String>(filter));
     }
+    // Sets the action of the loadButtonBeing clicked. Mainly starting the webscraper and adding the data to the scene
     private void loadButtonClicked() {
+        // Make sure we at least know the book, chapter, and starting verse number
         if (chapterField.getText().isEmpty() || startVerseField.getText().isEmpty() || (bookChoiceBox.getValue() == null)) {
             System.out.println("Missing info. Please enter the text and the reference for your verse");
         }
@@ -52,9 +59,11 @@ public class GameSetupController {
             if (endVerseField.getText().isEmpty()) {
                 endVerseField.setText(startVerseField.getText());
             }
+            // Fill the verseTextField with the results of the webscraper
             verseTextField.setText(WebScraper.getRawVerseText((String) bookChoiceBox.getValue(), Integer.parseInt(chapterField.getText()), Integer.parseInt(startVerseField.getText()), Integer.parseInt(endVerseField.getText()), "ESV"));
         }
     }
+    // Logic that runs when the play button is pressed. Transition scenes and send data to the hangman game
     private void startGame() {
         try {
             SceneRelay sceneRelay = SceneRelay.getInstance();
@@ -68,7 +77,7 @@ public class GameSetupController {
             e.printStackTrace();
         }
     }
-
+    // Routine to add the books of the bible to the ChoiceBox
     private void setBooksOfTheBible() {
         bookChoiceBox.setItems(booksOfTheBible);
         booksOfTheBible.addAll(
@@ -83,20 +92,29 @@ public class GameSetupController {
         );
     }
     @FXML
+    /* Initialize method for FXML runs when FXMLLoader.load() is called. Since that is only called once for this class,
+    This method will only run once. It will not run on replays of the game. */
     public void initialize() {
+        // Call our setup routines
         setBooksOfTheBible();
         setTextFieldFormatters();
+        // Play button is disabled until a verse is loaded into the verseText box.
         playButton.setDisable(true);
+        // Set logic for load button
         loadButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                // Call subroutine
                 loadButtonClicked();
+                // Re-enable the play button
                 playButton.setDisable(false);
             }
         });
+        // Set logic for play button being clicked
         playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                // call subroutine
                 startGame();
             }
         });
