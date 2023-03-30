@@ -11,7 +11,7 @@ public class VerseProcessing {
         List<Word> wordList = new ArrayList<>();
         String[] words = verseText.split(" "); // delimit
         for (int i = 0; i < words.length; i++) { // Search through all words.
-            Word w = new Word(words[i].length(), words[i]); // Turn into Word
+            Word w = new Word(words[i]); // Turn into Word
             wordList.add(w); // add to wordList
         }
         wordList = filterWords(wordList); // Filter the word list
