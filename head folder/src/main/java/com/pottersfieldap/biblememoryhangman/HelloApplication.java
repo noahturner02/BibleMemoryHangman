@@ -12,7 +12,6 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         SceneRelay sceneRelay = SceneRelay.getInstance();
-        sceneRelay.setStage(stage);
         sceneRelay.addToStageMap("setup_stage", stage);
 
         FXMLLoader fxmlLoader= new FXMLLoader(HelloApplication.class.getResource("game-setup-wizard.fxml"));
