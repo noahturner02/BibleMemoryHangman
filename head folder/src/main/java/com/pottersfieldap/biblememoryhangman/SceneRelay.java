@@ -76,6 +76,7 @@ public class SceneRelay {
                 Parent root = FXMLLoader.load(getClass().getResource(future_scene));
                 Stage newStage = new Stage();
                 newStage.setScene(new Scene(root, xDimension, yDimension));
+                addToStageMap(future_scene, newStage);
                 newStage.show();
                 // Hide old stage
                 getFromStageMap(current_scene).hide();
