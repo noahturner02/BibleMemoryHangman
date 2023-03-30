@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bible-memory-hangman" target="12" />
+      <module name="bible-memory-hangman" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
