@@ -60,7 +60,7 @@ public class WebScraper {
                         }
                         // Skip over all the <sup> tags. These contain verse numbers and cross references
                         if (!subSpanNode.getNodeName().equals("sup")) {
-                            sb.append(subSpanNode.getTextContent());
+                            sb.append(subSpanNode.getTextContent().trim());
                             sb.append(" ");
                         }
                     }
@@ -72,6 +72,11 @@ public class WebScraper {
         } catch (IOException e) {
             System.out.println("Something went wrong. Check the Web Scraper");
         }
-        return sb.toString().replace("\s+", " ");
+        return postProcessing(sb.toString());
+    }
+    // Text filtering applied after the whole string has been assembled
+    private static String postProcessing(String s) {
+        s = s.replace(" , ", ", ");
+        return s;
     }
 }
