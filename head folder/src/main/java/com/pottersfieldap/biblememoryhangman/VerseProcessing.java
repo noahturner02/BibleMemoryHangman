@@ -4,36 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
+// Handles the String manipulation for the verse text. Turns one long, punctuated string into a series of lowercase
 public class VerseProcessing {
+    // Delimits the giant string by spaces and turns them into word objects
     public static List<Word> textToWords(String verseText) {
         List<Word> wordList = new ArrayList<>();
-        String[] words = verseText.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            Word w = new Word(words[i].length(), words[i]);
-            wordList.add(w);
+        String[] words = verseText.split(" "); // delimit
+        for (int i = 0; i < words.length; i++) { // Search through all words.
+            Word w = new Word(words[i].length(), words[i]); // Turn into Word
+            wordList.add(w); // add to wordList
         }
-        wordList = filterWords(wordList);
+        wordList = filterWords(wordList); // Filter the word list
         return wordList;
     }
+    // Filters out punctuation and makes it lower case. Adds it as the filtered text property on the Word.
     private static List<Word> filterWords(List<Word> wordList) {
-        // filter out punctuation and make everything lowercase
-        char leftQuote = '\u201c';
-        char rightQuote = '\u201d';
-        List<Word> filteredWordList = new ArrayList<>();
-        for (Word w : wordList) {
+        char leftQuote = '\u201c'; // Unicode for left quote
+        char rightQuote = '\u201d'; // Unicode for right quote
+        for (Word w : wordList) { // Search through all the words
             String newWord = w.getText();
-            newWord = newWord.replace(",", "");
-            newWord = newWord.replace(":", "");
-            newWord = newWord.replace(".", "");
-            newWord = newWord.replace(";", "");
-            newWord = newWord.replace("?", "");
-            newWord = newWord.replace("\"", "");
-            newWord = newWord.replace(String.valueOf(leftQuote), "");
-            newWord = newWord.replace(String.valueOf(rightQuote), "");
-            newWord = newWord.toLowerCase(Locale.ROOT);
-            w.setFilteredText(newWord);
-           // System.out.println(w.getFilteredText());
+            newWord = newWord.replace(",", ""); // Take out commas
+            newWord = newWord.replace(":", ""); // Take out colons
+            newWord = newWord.replace(".", ""); // Take out periods
+            newWord = newWord.replace(";", ""); // Take out semicolons
+            newWord = newWord.replace("?", ""); // Take out question marks
+            newWord = newWord.replace("\"", ""); // Take out double quotes
+            newWord = newWord.replace(String.valueOf(leftQuote), ""); // Take out left double quotes
+            newWord = newWord.replace(String.valueOf(rightQuote), ""); // Take out right double quotes
+            newWord = newWord.toLowerCase(Locale.ROOT); // turn into lowercase
+            w.setFilteredText(newWord); // Set as filtered text property of the Word.
         }
         return wordList;
     }

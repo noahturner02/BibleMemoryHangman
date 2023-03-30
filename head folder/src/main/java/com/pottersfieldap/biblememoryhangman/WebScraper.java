@@ -8,7 +8,7 @@ import java.util.List;
 
 import java.io.IOException;
 
-
+// Handles the WebScraping for BibleGateway
 public class WebScraper {
     public static String getRawVerseText(String bookName, int chapterNum, int startVerse, int endVerse, String versionName) {
         // Configure the web scraper.
