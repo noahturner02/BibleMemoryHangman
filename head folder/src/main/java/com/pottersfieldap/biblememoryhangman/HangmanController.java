@@ -46,6 +46,7 @@ public class HangmanController {
 
     String scripture = "";
     List<Word> currentWordList = new ArrayList<>();
+    SceneRelay sceneRelay = SceneRelay.getInstance();
 
     public List<Word> getCurrentWordList() {
         return currentWordList;
@@ -128,22 +129,7 @@ public class HangmanController {
         }
         else if (!leftLeg.isVisible()) {
             leftLeg.setVisible(true);
-            try {
-                SceneRelay sceneRelay = SceneRelay.getInstance();
-                sceneRelay.setWin(false);
-                sceneRelay.addToStageMap("hangman_stage", (Stage) verseTextPane.getScene().getWindow());
-
-                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("game-result-window.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 300, 600);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("You Lose");
-                stage.show();
-
-                disableControls();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            endGame(false);
         }
     }
 
@@ -156,22 +142,7 @@ public class HangmanController {
             }
         }
         if (checkForWin()) {
-            try {
-                SceneRelay sceneRelay = SceneRelay.getInstance();
-                sceneRelay.setWin(true);
-                sceneRelay.addToStageMap("hangman_stage", (Stage) verseTextPane.getScene().getWindow());
-
-                FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("game-result-window.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 300, 600);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("You Win");
-                stage.show();
-
-                disableControls();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            endGame(true);
         }
         if (!hit) {
             revealPiece();
@@ -202,6 +173,18 @@ public class HangmanController {
         // When the scene is being loaded and reset, re-enable the controls
         guessField.setDisable(false);
         guessButton.setDisable(false);
+    }
+
+    private void endGame(Boolean win) {
+        sceneRelay.setWin(win);
+        sceneRelay.addToStageMap("hangman-scene.fxml", (Stage) verseTextPane.getScene().getWindow());
+        sceneRelay.switchScene("hangman-scene.fxml", "game-result-window.fxml", 300, 600, true);
+        disableControls();
+        if (win) {
+            sceneRelay.getFromStageMap("game-result-window.fxml").setTitle("You Win!");
+        } else {
+            sceneRelay.getFromStageMap("game-result-window.fxml").setTitle("You Lose!");
+        }
     }
 
     @FXML

@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         // Call sceneRelay to add setup_stage to the stagemap for future reference
         SceneRelay sceneRelay = SceneRelay.getInstance();
-        sceneRelay.addToStageMap("setup_stage", stage);
+        sceneRelay.addToStageMap("game-setup-wizard.fxml", stage);
 
         // Load the setup wizard to start the program
         FXMLLoader fxmlLoader= new FXMLLoader(HelloApplication.class.getResource("game-setup-wizard.fxml"));

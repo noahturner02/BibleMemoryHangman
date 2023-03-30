@@ -44,10 +44,9 @@ public class GameResultController {
         replayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                sceneRelay.addToStageMap("result_stage", (Stage) replayButton.getScene().getWindow());
-                sceneRelay.getFromStageMap("setup_stage").show();
-                sceneRelay.getFromStageMap("hangman_stage").hide();
-                sceneRelay.getFromStageMap("result_stage").hide();
+                sceneRelay.addToStageMap("game-result-window.fxml", (Stage) replayButton.getScene().getWindow());
+                sceneRelay.getFromStageMap("hangman-scene.fxml").hide();
+                sceneRelay.switchScene("game-result-window.fxml", "game-setup-wizard.fxml", 0, 0, false);
             }
         });
     }

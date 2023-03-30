@@ -68,11 +68,7 @@ public class GameSetupController {
         try {
             SceneRelay sceneRelay = SceneRelay.getInstance();
             sceneRelay.setScripture(verseTextField.getText());
-            Parent root = FXMLLoader.load(getClass().getResource("hangman-scene.fxml"));
-            Stage hangmanStage = new Stage();
-            hangmanStage.setScene(new Scene(root, 900, 600));
-            hangmanStage.show();
-            playButton.getScene().getWindow().hide();
+            sceneRelay.switchScene("game-setup-wizard.fxml", "hangman-scene.fxml", 900, 600, true);
         } catch (Exception e) {
             e.printStackTrace();
         }

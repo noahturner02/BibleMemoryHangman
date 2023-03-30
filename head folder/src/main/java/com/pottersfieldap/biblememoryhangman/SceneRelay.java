@@ -1,8 +1,12 @@
 package com.pottersfieldap.biblememoryhangman;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 /* This class is responsible for communication that happens between different scenes of the program. Since this class
@@ -51,12 +55,37 @@ public class SceneRelay {
     public Boolean getWin() {
         return win;
     }
-    // Add a stage to the stage map.
+    // Add a stage to the stage map. The name must be an FMXL file.
     public void addToStageMap(String name, Stage stage) {
         stageMap.put(name, stage);
     }
     // get a stage from the stage map
     public Stage getFromStageMap(String name) {
         return stageMap.get(name);
+    }
+    /* Facilitates switching between scenes. First String parameter is the name of the FXML file of the current scene,
+    and second String parameter is the name of the FXML file of the scene being transitioned to. Included are the
+    dimensions for the window (only used if a new window is being made). Finally, a boolean is used to indicate whether
+    a new window should be made or if the old stage should just be shown.
+     */
+    public void switchScene(String current_scene, String future_scene, int xDimension, int yDimension, Boolean new_scene) {
+        // If a new scene should be made
+        if (new_scene) {
+            try {
+                // Use the FXMLLoader to make a whole new stage
+                Parent root = FXMLLoader.load(getClass().getResource(future_scene));
+                Stage newStage = new Stage();
+                newStage.setScene(new Scene(root, xDimension, yDimension));
+                newStage.show();
+                // Hide old stage
+                getFromStageMap(current_scene).hide();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            // Simply show the new stage and hide the old one.
+            getFromStageMap(future_scene).show();
+            getFromStageMap(current_scene).hide();
+        }
     }
 }
