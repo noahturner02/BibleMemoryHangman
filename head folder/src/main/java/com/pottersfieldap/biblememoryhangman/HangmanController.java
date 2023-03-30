@@ -21,8 +21,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// This class handles the actual game logic.
 public class HangmanController {
+    // Initialization of FXML elements
     @FXML
     Pane manPane;
     @FXML
@@ -44,74 +45,76 @@ public class HangmanController {
     @FXML
     Line leftArm;
 
+    // Initializing other things
     String scripture = "";
     List<Word> currentWordList = new ArrayList<>();
     SceneRelay sceneRelay = SceneRelay.getInstance();
-
+    // Gets the list of words
     public List<Word> getCurrentWordList() {
         return currentWordList;
     }
+    // Sets the current word list
     public void setCurrentWordList(List<Word> wordList) {
         this.currentWordList = wordList;
     }
-    private boolean checkForWin() {
+    private boolean checkForWin() { // Iterates through all the word panes to see if they are all visible
         boolean win = true;
-        for (int i = 0; i < verseTextPane.getChildren().size(); i++) {
-            Pane p = (Pane) verseTextPane.getChildren().get(i);
-            if (!p.getChildren().get(0).isVisible()) {
+        for (int i = 0; i < verseTextPane.getChildren().size(); i++) { // All the children of the TilePane
+            Pane p = (Pane) verseTextPane.getChildren().get(i); // Cast the child into a Pane
+            if (!p.getChildren().get(0).isVisible()) { // If the word is invisible
+                // We haven't won yet. exit the method and continue playing
                 win = false;
                 break;
             }
         }
+        // If all the words are visible, then the game has been won, return true.
         return win;
     }
-    private void placeVerseText(String verseText) { // Places the invisible labels and shows the blanks of corresponding size
-        List<Word> wordList = VerseProcessing.textToWords(verseText);
-        setCurrentWordList(wordList);
-        int xLayoutTracker = 0; // Tracks the blank lines that are drawn in the verse text pane. follows from left to right
-        int yLayoutTracker = 0; // Tracks the blank lines on the y axis
-        int lineSize = 0;
+    // Places the invisible labels and shows the blanks of corresponding size
+    private void placeVerseText(String verseText) {
+        List<Word> wordList = VerseProcessing.textToWords(verseText); // Generate the word list from raw text
+        setCurrentWordList(wordList); // Set the list to the class, making it available to all
         for (Word w : wordList) { // Place the invisible label and line for each word
             Pane p = new Pane(); // wrapper pane for the labels
-            Label l = new Label(w.getText());
-            l.setVisible(false);
-            p.getChildren().add(l);
+            Label l = new Label(w.getText()); // Make label
+            l.setVisible(false); // Make label invisible
+            p.getChildren().add(l); // Add the label to wrapper pane
             l.layoutXProperty().bind(p.widthProperty().subtract(l.widthProperty()).divide(2)); // bind the label to the center of the pane
-            verseTextPane.getChildren().add(p);
-            drawLines(p);
+            verseTextPane.getChildren().add(p); // Add wrapper pane to TilePane
+            drawLines(p); // Draw the line for this word
         }
     }
-
+    // Just returns contents of guessField
     private String getGuess() {
         return guessField.getText();
     }
-
+    // Draws the line underneath the invisible word.
     private void drawLines(Pane p) {
-        Line l = new Line();
-        Label word = (Label) p.getChildren().get(0);
+        Line l = new Line(); // Make a new line
+        Label word = (Label) p.getChildren().get(0); // Get the label from the Pane
+        // ChangeListeners will keep the blank under the word even when the label changes place
         word.layoutXProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                l.setStartX((p.getWidth() - word.getWidth()) / 2);
+                l.setStartX((p.getWidth() - word.getWidth()) / 2);  // Bind the start of the line to the beginning of the word
             }
         });
         word.heightProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                l.setLayoutY(word.getHeight());
+                l.setLayoutY(word.getHeight()); // Bind the y layout of the line to underneath the word
             }
         });
         word.widthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                l.setEndX((p.getWidth() - (p.getWidth() - word.getWidth()) / 2));
+                l.setEndX((p.getWidth() - (p.getWidth() - word.getWidth()) / 2)); // Bind the end of the line to the end of the word
             }
         });
-        p.getChildren().add(l);
+        p.getChildren().add(l); // Add the line to the Pane
     }
-
+    // Reveals the next piece of the hangman
     private void revealPiece() {
-        // Reveals the next piece of the hangman
         if (!head.isVisible()) {
             head.setVisible(true);
         }
@@ -132,28 +135,28 @@ public class HangmanController {
             endGame(false);
         }
     }
-
+    // Matches the player's guess to the current list of words
     private void matchAndReveal(String guess) {
         boolean hit = false;
-        for (int i = 0; i < getCurrentWordList().size(); i++) {
-            if (getCurrentWordList().get(i).getFilteredText().equalsIgnoreCase(guess)) {
-                revealWordByIndex(i);
+        for (int i = 0; i < getCurrentWordList().size(); i++) { // Iterate through word list
+            if (getCurrentWordList().get(i).getFilteredText().equalsIgnoreCase(guess)) { // if the guess equals the word
+                revealWordByIndex(i); // reveal the word
                 hit = true;
             }
         }
-        if (checkForWin()) {
+        if (checkForWin()) { // If a win has happened, end the game
             endGame(true);
         }
-        if (!hit) {
+        if (!hit) { // If the guess didn't match any words, reveal a piece
             revealPiece();
         }
     }
-
+    // Given a word's index, make it visible
     private void revealWordByIndex(int i) {
-        Pane p = (Pane) verseTextPane.getChildren().get(i);
-        p.getChildren().get(0).setVisible(true);
+        Pane p = (Pane) verseTextPane.getChildren().get(i); // Get the pane from the TilePane
+        p.getChildren().get(0).setVisible(true); // make the label visible
     }
-
+    // Makes the whole body invisible.
     private void hideBody() {
         head.setVisible(false);
         spine.setVisible(false);
@@ -162,19 +165,17 @@ public class HangmanController {
         leftLeg.setVisible(false);
         rightLeg.setVisible(false);
     }
-
+    // When the game has ended, disable the guessField and guess Button.
     private void disableControls() {
-        // When the game has ended, disable the guessField and guess Button.
         guessField.setDisable(true);
         guessButton.setDisable(true);
     }
-
+    // When the scene is being loaded and reset, re-enable the controls
     private void enableControls() {
-        // When the scene is being loaded and reset, re-enable the controls
         guessField.setDisable(false);
         guessButton.setDisable(false);
     }
-
+    // Once the game has ended, switch the scene to the result screen and disable controls
     private void endGame(Boolean win) {
         sceneRelay.setWin(win);
         sceneRelay.addToStageMap("hangman-scene.fxml", (Stage) verseTextPane.getScene().getWindow());
@@ -188,25 +189,23 @@ public class HangmanController {
     }
 
     @FXML
+    // FXML initialize method. Since this scene is always created new, this will run anytime the scene shows.
     public void initialize() {
-        SceneRelay sceneRelay = SceneRelay.getInstance();
-        scripture = sceneRelay.getScripture();
-        System.out.println("Here is the scripture: " + scripture);
-        placeVerseText(scripture);
-        hideBody();
-        enableControls();
-        guessButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        scripture = sceneRelay.getScripture(); // Get the scripture from the setup
+        placeVerseText(scripture); // Place the verse text into the game
+        hideBody(); // hide all the body parts
+        enableControls(); // enable controls
+        guessButton.setOnMouseClicked(new EventHandler<MouseEvent>() { // When the guessButton is clicked, will try to match guess
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println(getGuess());
-                matchAndReveal(getGuess());
-                guessField.setText("");
+                matchAndReveal(getGuess()); // match guess
+                guessField.setText(""); // empty box
             }
         });
-        guessField.setOnKeyPressed(event -> {
+        guessField.setOnKeyPressed(event -> { // When ENTER is pressed inside the guessBox, it will try to match what's inside
             if (event.getCode() == KeyCode.ENTER) {
-                matchAndReveal(getGuess());
-                guessField.setText("");
+                matchAndReveal(getGuess()); // match guess
+                guessField.setText(""); // empty box
             }
         });
     }
