@@ -29,6 +29,10 @@ public class VerseProcessing {
             newWord = newWord.replace(";", ""); // Take out semicolons
             newWord = newWord.replace("?", ""); // Take out question marks
             newWord = newWord.replace("\"", ""); // Take out double quotes
+            newWord = newWord.replace("!", ""); // Take out exclamation points
+            newWord = newWord.replace("(", ""); // Take out left parentheses
+            newWord = newWord.replace(")", ""); // Take out right parentheses
+            newWord = newWord.replace("-", " "); // Replace dashes with spaces.
             newWord = newWord.replace(String.valueOf(leftQuote), ""); // Take out left double quotes
             newWord = newWord.replace(String.valueOf(rightQuote), ""); // Take out right double quotes
             newWord = newWord.toLowerCase(Locale.ROOT); // turn into lowercase

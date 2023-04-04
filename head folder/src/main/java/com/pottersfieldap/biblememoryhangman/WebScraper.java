@@ -10,6 +10,8 @@ import java.io.IOException;
 
 // Handles the WebScraping for BibleGateway
 public class WebScraper {
+    private static char em_dash = '\u2014';
+
     public static String getRawVerseText(String bookName, int chapterNum, int startVerse, int endVerse, String versionName) {
         // Configure the web scraper.
         WebClient wc = new WebClient(BrowserVersion.CHROME);
@@ -59,7 +61,7 @@ public class WebScraper {
                             }
                         }
                         // Skip over all the <sup> tags. These contain verse numbers and cross references
-                        if (!subSpanNode.getNodeName().equals("sup")) {
+                        if (!subSpanNode.getNodeName().equals("sup") && !subSpanNode.getNodeName().equals("span")) {
                             sb.append(subSpanNode.getTextContent().trim());
                             sb.append(" ");
                         }
@@ -76,7 +78,12 @@ public class WebScraper {
     }
     // Text filtering applied after the whole string has been assembled
     private static String postProcessing(String s) {
-        s = s.replace(" , ", ", ");
+        s = s.replace(" , ", ", "); // fix floating commas
+        s = s.replace(" ( ", " ("); // fix floating left parentheses
+        s = s.replace(" ) ", ") "); // fix floating right parentheses
+        s = s.replace(String.valueOf(em_dash), " "); // Replace em dashes with spaces
+        s = s.replaceAll("&nbsp;", ""); // Remove any NBSP's. Fixes the weird whitespace that shows up
+        System.out.println(s);
         return s;
     }
 }
