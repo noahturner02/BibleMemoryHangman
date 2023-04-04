@@ -82,10 +82,11 @@ public class WebScraper {
     }
     // Text filtering applied after the whole string has been assembled
     private static String postProcessing(String s) {
-        s = s.replace(" , ", ", "); // fix floating commas
+        s = s.replace(" ,", ","); // fix detached commas
+        s = s.replace(" .", "."); // fix detached periods
         s = s.replace(" ( ", " ("); // fix floating left parentheses
         s = s.replace(" ) ", ") "); // fix floating right parentheses
-        s = s.replace(" ! ", "! "); // fix floating exclamation points
+        s = s.replace(" !", "!"); // fix detached exclamation points
         s = s.replace(String.valueOf(em_dash), " "); // Replace em dashes with spaces
         s = s.replaceAll("\\s+", " "); // Replace double spaces with single spaces
         s = s.replaceAll("&nbsp;", ""); // Remove any NBSP's. Fixes the weird whitespace that shows up

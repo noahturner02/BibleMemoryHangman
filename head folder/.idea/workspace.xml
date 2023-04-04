@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50e823cd-bc53-4b6d-a01d-6a845c259973" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/VerseProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/VerseProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/WebScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/WebScraper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +242,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/pottersfieldap/biblememoryhangman/VerseProcessing.java</url>
-          <line>23</line>
+          <line>25</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
