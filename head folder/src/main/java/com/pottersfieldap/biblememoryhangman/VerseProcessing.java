@@ -21,6 +21,8 @@ public class VerseProcessing {
     private static List<Word> filterWords(List<Word> wordList) {
         char leftQuote = '\u201c'; // Unicode for left quote
         char rightQuote = '\u201d'; // Unicode for right quote
+        char leftSingleQuote = '\u2018'; // Unicode for left single quote
+        char rightSingleQuote = '\u2019'; // Unicode for right single quote
         for (Word w : wordList) { // Search through all the words
             String newWord = w.getText();
             newWord = newWord.replace(",", ""); // Take out commas
@@ -35,6 +37,8 @@ public class VerseProcessing {
             newWord = newWord.replace("-", " "); // Replace dashes with spaces.
             newWord = newWord.replace(String.valueOf(leftQuote), ""); // Take out left double quotes
             newWord = newWord.replace(String.valueOf(rightQuote), ""); // Take out right double quotes
+            newWord = newWord.replace(String.valueOf(leftSingleQuote), ""); // Take out left single quote
+            newWord = newWord.replace(String.valueOf(rightSingleQuote), ""); // Take out right single quote
             newWord = newWord.toLowerCase(Locale.ROOT); // turn into lowercase
             w.setFilteredText(newWord); // Set as filtered text property of the Word.
         }
