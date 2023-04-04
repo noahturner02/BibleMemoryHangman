@@ -82,6 +82,7 @@ public class WebScraper {
         s = s.replace(" ( ", " ("); // fix floating left parentheses
         s = s.replace(" ) ", ") "); // fix floating right parentheses
         s = s.replace(String.valueOf(em_dash), " "); // Replace em dashes with spaces
+        s = s.replaceAll("\\s+", " "); // Replace double spaces with single spaces
         s = s.replaceAll("&nbsp;", ""); // Remove any NBSP's. Fixes the weird whitespace that shows up
         System.out.println(s);
         return s;
