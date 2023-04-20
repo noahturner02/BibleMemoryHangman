@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -25,7 +26,7 @@ import java.util.List;
 public class HangmanController {
     // Initialization of FXML elements
     @FXML
-    Pane manPane;
+    StackPane manPane;
     @FXML
     TilePane verseTextPane;
     @FXML
